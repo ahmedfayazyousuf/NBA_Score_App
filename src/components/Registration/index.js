@@ -103,8 +103,8 @@ const Registration = () =>{
             Country:Country,
             time: firebase.firestore.FieldValue.serverTimestamp()
 
-        }).then(()=>{
-            navigate('/Success')
+        }).then((docRef)=>{
+            navigate('/Score',{state:{data:{id:docRef.id}}})
         })
     }
 
