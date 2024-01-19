@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+body, html{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;   
+    /* height: 100vh; */
+
+    background-image: url("desktopwallpaper.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: 0.6;
+    overflow-x: hidden;
+}
+
+body{
+    overflow-y: scroll;
+}
+
+
+@font-face{
+    font-family: myFont;
+    src:url(outagecut.ttf);
+}
+*{
+    font-family: myFont;
+}
+
+tr:nth-child(even) {  
+    background-color: #ffffff;  
+} 
+
+@media only screen and (max-width: 600px) {
+    .slotparent{
+        flex-direction: row;
+    }
+    .slotdiv{
+        flex-direction: column;
+    }
+    .rower{
+        flex-direction: column;
+    }
+}
+
+
+
+  @media only screen and (max-width: 600px) {
+    body,html {
+        background-image: url("mobilewallpaper.png");
+    }
+  }
