@@ -16,6 +16,11 @@ body{
     overflow-y: scroll;
 }
 
+input::placeholder{
+    color: white !important; /* Set the placeholder color as per your preference */
+    font-size: 20px;
+  }
+
 
 @font-face{
     font-family: myFont;
