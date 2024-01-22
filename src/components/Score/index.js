@@ -1,49 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
 import firebase from '../../firebase';
 import box from '../images/Rectangle.png'
 import bluebox from '../images/bluebox.png'
 import nbalogo from '../images/logo.png'
-
 const Score = () => {
+  const [score, setScore] = useState(0);
+  const [timer, setTimer] = useState({ minutes: 0, seconds: 5 });
+  const location = useLocation();
+  const navigate = useNavigate();
+  const intervalRef = useRef(null); // Use useRef to create a persistent reference
 
-    const [score,setScore] = useState(0)
-    const [minutes, setMinutes] = useState(0)
-    const [seconds, setSeconds] = useState(5)
-    const location = useLocation()
-    const navigate = useNavigate();
+  useEffect(() => {
+    const Users = firebase.firestore().collection("Users");
 
-    useEffect(() => {
-        const Users = firebase.firestore().collection("Users");
+    intervalRef.current = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer.seconds > 0) {
+          return { ...prevTimer, seconds: prevTimer.seconds - 1 };
+        } else if (prevTimer.minutes > 0) {
+          return { minutes: prevTimer.minutes - 1, seconds: 59 };
+        } else {
+          clearInterval(intervalRef.current);
+          document.getElementById("pop").style.zIndex = "100";
+          Users.doc(location.state.data.id).update({ Score: score });
 
-        let myInterval = setInterval(() => {
-          if (seconds > 0) {
-            setSeconds(seconds - 1)
-          } if (seconds === 0) {
-            if (minutes === 0) {
-              clearInterval(myInterval)
-              document.getElementById('pop').style.zIndex = '100'
-              Users.doc(location.state.data.id).update({Score:score})
+          setTimeout(() => {
+            navigate("/Leaderboard");
+          }, 5000);
 
-              setTimeout(()=>{
-                navigate('/Leaderboard')
-              }, 5000)
-
-            } else {
-              setMinutes(minutes - 1)
-              setSeconds(59)
-            }
-          }
-        }, 1000)
-        return () => {
-          clearInterval(myInterval)
+          return prevTimer;
         }
-      })
- 
+      });
+    }, 1000);
 
-    function add(n){
-            setScore(score + n)
-    }
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, [score, location.state.data.id, navigate]);
+
+  function add(n) {
+    setScore((prevScore) => prevScore + n);
+  }
     return(
             
         <div style={{display:"flex", flexDirection:"column", width:"100%", height: "100vh", justifyContent:"center", alignItems:"center", flexWrap: 'wrap', textAlign: 'center'}}>
