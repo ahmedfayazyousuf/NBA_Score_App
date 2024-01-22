@@ -49,14 +49,14 @@ const Score = () => {
         <div style={{display:"flex", flexDirection:"column", width:"100%", height: "100vh", justifyContent:"center", alignItems:"center", flexWrap: 'wrap', textAlign: 'center'}}>
           
           <div style={{display:'flex',width:'100%',height:'20%',justifyContent:'flex-end',alignSelf:'flex-start',position:'absolute',top:'0',padding:'30px'}}>
-            <img src={nbalogo} style={{minWidth: '100px', maxWidth: '300px'}}/>
+            <img src={nbalogo} alt="fintech" style={{minWidth: '100px', maxWidth: '300px'}}/>
           </div>
           
           <div style={{marginBottom:'20px',color:'white'}}>
                 <h1>{location.state.data.name}</h1>
           </div>
 
-          <div style={{display:'flex',width:'100%',display:'flex',justifyContent:"center", alignItems:"center"}}>
+          <div style={{display:'flex',width:'100%',justifyContent:"center", alignItems:"center"}}>
             <div style={{backgroundImage:`url(${box}) `,  backgroundRepeat: 'no-repeat', backgroundSize:'contain',width:'340px',height:'180px',display:'flex',justifyContent:"center", alignItems:"center",marginRight:'90px'}}>
             <h1 style={{color:'white'}}>{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
             </div>
@@ -66,7 +66,7 @@ const Score = () => {
             </div>
           </div>
 
-          <div style={{display:'flex',width:'100%',display:'flex',justifyContent:"center", alignItems:"center",marginTop:'50px'}}>
+          <div style={{display:'flex',width:'100%', justifyContent:"center", alignItems:"center",marginTop:'50px'}}>
             <div onClick={()=>{add(1)}} style={{width:'100px',height:'70px',display:'flex',justifyContent:"center", alignItems:"center",borderRadius:'10px',backgroundColor:'#00438C',marginRight:'30px',color:'white'}}>
                 1
             </div>

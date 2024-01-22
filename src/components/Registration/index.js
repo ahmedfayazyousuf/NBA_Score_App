@@ -1,18 +1,10 @@
-// import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import firebase from '../../firebase';
 import '../images/All.css';
 import nbalogo from '../images/logo.png'
-import submit from '../images/submit.png'
 import { useState } from 'react';
 import './style.scss'
-// import GetReady from '../getready.png';
-// import { useParams } from "react-router-dom";
-// eslint-disable-next-line
 import {useRef} from 'react';
-// import axios from "axios";
-// import { Link } from "react-router-dom";
-// import {useLocation} from 'react-router-dom';
 
 const Registration = () =>{
     // const [numberr, setNumberr] = useState(false);
@@ -20,6 +12,7 @@ const Registration = () =>{
     // const location = useLocation();
     // eslint-disable-next-line
     const buttonRef = useRef(null);
+    // eslint-disable-next-line
     const [select, setSelect] = useState('m')
 
 //    function onlyOnetwo(e) {

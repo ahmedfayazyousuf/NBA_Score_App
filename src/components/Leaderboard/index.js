@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../firebase';
-import { useNavigate } from 'react-router-dom';
 import nbalogo from '../images/logo.png'
-
-
 
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
-  const [count,setCount] = useState(0)
-  const navigate = useNavigate();
 
   useEffect(() => {
     const Users = firebase.firestore().collection("Users");
