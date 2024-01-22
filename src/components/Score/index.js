@@ -16,28 +16,28 @@ const Score = () => {
     useEffect(() => {
         const Users = firebase.firestore().collection("Users");
 
-        // let myInterval = setInterval(() => {
-        //   if (seconds > 0) {
-        //     setSeconds(seconds - 1)
-        //   } if (seconds === 0) {
-        //     if (minutes === 0) {
-        //       clearInterval(myInterval)
-        //       document.getElementById('pop').style.zIndex = '100'
-        //       Users.doc(location.state.data.id).update({Score:score})
+        let myInterval = setInterval(() => {
+          if (seconds > 0) {
+            setSeconds(seconds - 1)
+          } if (seconds === 0) {
+            if (minutes === 0) {
+              clearInterval(myInterval)
+              document.getElementById('pop').style.zIndex = '100'
+              Users.doc(location.state.data.id).update({Score:score})
 
-        //       setTimeout(()=>{
-        //         navigate('/Leaderboard')
-        //       }, 5000)
+              setTimeout(()=>{
+                navigate('/Leaderboard')
+              }, 5000)
 
-        //     } else {
-        //       setMinutes(minutes - 1)
-        //       setSeconds(59)
-        //     }
-        //   }
-        // }, 1000)
-        // return () => {
-        //   clearInterval(myInterval)
-        // }
+            } else {
+              setMinutes(minutes - 1)
+              setSeconds(59)
+            }
+          }
+        }, 1000)
+        return () => {
+          clearInterval(myInterval)
+        }
       })
  
 

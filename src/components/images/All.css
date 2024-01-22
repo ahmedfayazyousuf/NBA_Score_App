@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+@font-face{
+    font-family: myFont;
+    src:url(Tajawal-Light.ttf);
+  }
 
 body, html{
-    font-family: 'Poppins', sans-serif;
+    font-family: myFont;
     font-weight: 400;   
-    /* height: 100vh; */
-
+    height: 100vh;
     background-image: url("desktopwallpaper.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: 0.6;
+    background-position: center;
     overflow-x: hidden;
 }
 
@@ -22,10 +25,7 @@ input::placeholder{
   }
 
 
-@font-face{
-    font-family: myFont;
-    src:url(outagecut.ttf);
-}
+
 *{
     font-family: myFont;
 }

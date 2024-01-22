@@ -153,7 +153,7 @@ const Registration = () =>{
 
                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom:'60px', cursor: 'grab'}} onClick={HandleSubmit}>  
                     <div style={{width:'150px',height:'50px',background:'#00438C',borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                        <p>SUBMIT</p>
+                        <p>REGISTER</p>
                     </div>      
                     {/* <img style={{width: '150px'}} src={submit} alt="submit"/> */}
                 </div>
