@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
 import firebase from '../../firebase';
 import box from '../images/Rectangle.png'
@@ -6,54 +6,59 @@ import bluebox from '../images/bluebox.png'
 import nbalogo from '../images/logo.png'
 
 const Score = () => {
-  const [score, setScore] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(5);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const intervalRef = useRef(null); // Use useRef to create a persistent reference
 
-  useEffect(() => {
-    const Users = firebase.firestore().collection("Users");
+    const [score,setScore] = useState(0)
+    const [minutes, setMinutes] = useState(0)
+    const [seconds, setSeconds] = useState(5)
+    const location = useLocation()
+    const navigate = useNavigate();
 
-    intervalRef.current = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      } else if (minutes > 0) {
-        setMinutes(minutes - 1);
-        setSeconds(59);
-      } else {
-        clearInterval(intervalRef.current);
-        document.getElementById("pop").style.zIndex = "100";
-        Users.doc(location.state.data.id).update({ Score: score });
+    useEffect(() => {
+        const Users = firebase.firestore().collection("Users");
 
-        setTimeout(() => {
-          navigate("/Leaderboard");
-        }, 5000);
-      }
-    }, 1000);
+        let myInterval = setInterval(() => {
+          if (seconds > 0) {
+            setSeconds(seconds - 1)
+          } if (seconds === 0) {
+            if (minutes === 0) {
+              clearInterval(myInterval)
+              document.getElementById('pop').style.zIndex = '100'
+              Users.doc(location.state.data.id).update({Score:score})
 
-    return () => {
-      clearInterval(intervalRef.current);
-    };
-  }, [seconds, minutes, score, location.state.data.id, navigate]);
+              setTimeout(()=>{
+                navigate('/Leaderboard')
+              }, 5000)
 
-  function add(n) {
-    setScore((prevScore) => prevScore + n);
-  }
+            } else {
+              setMinutes(minutes - 1)
+              setSeconds(59)
+            }
+          }
+        }, 1000)
+        return () => {
+          clearInterval(myInterval)
+        }
+      })
+ 
+
+    function add(n){
+            // setScore(score + n)
+            console.log(document.getElementById('Score').innerHTML)
+            document.getElementById('Score').innerHTML=  parseInt(document.getElementById('Score').innerHTML, 10) + n;
+    }
     return(
             
         <div style={{display:"flex", flexDirection:"column", width:"100%", height: "100vh", justifyContent:"center", alignItems:"center", flexWrap: 'wrap', textAlign: 'center'}}>
           
           <div style={{display:'flex',width:'100%',height:'20%',justifyContent:'flex-end',alignSelf:'flex-start',position:'absolute',top:'0',padding:'30px'}}>
-            <img src={nbalogo} alt="fintech" style={{minWidth: '100px', maxWidth: '300px'}}/>
+            <img src={nbalogo} style={{minWidth: '100px', maxWidth: '300px'}}/>
           </div>
           
           <div style={{marginBottom:'20px',color:'white'}}>
                 <h1>{location.state.data.name}</h1>
           </div>
 
-          <div style={{display:'flex',width:'100%',justifyContent:"center", alignItems:"center"}}>
+          <div style={{display:'flex',width:'100%',display:'flex',justifyContent:"center", alignItems:"center"}}>
             <div style={{backgroundImage:`url(${box}) `,  backgroundRepeat: 'no-repeat', backgroundSize:'contain',width:'340px',height:'180px',display:'flex',justifyContent:"center", alignItems:"center",marginRight:'90px'}}>
             <h1 style={{color:'white'}}>{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
             </div>
@@ -63,7 +68,7 @@ const Score = () => {
             </div>
           </div>
 
-          <div style={{display:'flex',width:'100%', justifyContent:"center", alignItems:"center",marginTop:'50px'}}>
+          <div style={{display:'flex',width:'100%',display:'flex',justifyContent:"center", alignItems:"center",marginTop:'50px'}}>
             <div onClick={()=>{add(1)}} style={{width:'100px',height:'70px',display:'flex',justifyContent:"center", alignItems:"center",borderRadius:'10px',backgroundColor:'#00438C',marginRight:'30px',color:'white'}}>
                 1
             </div>
