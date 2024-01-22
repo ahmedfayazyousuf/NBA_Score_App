@@ -4,9 +4,11 @@ import firebase from '../../firebase';
 import box from '../images/Rectangle.png'
 import bluebox from '../images/bluebox.png'
 import nbalogo from '../images/logo.png'
+
 const Score = () => {
   const [score, setScore] = useState(0);
-  const [timer, setTimer] = useState({ minutes: 0, seconds: 5 });
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(5);
   const location = useLocation();
   const navigate = useNavigate();
   const intervalRef = useRef(null); // Use useRef to create a persistent reference
@@ -15,29 +17,26 @@ const Score = () => {
     const Users = firebase.firestore().collection("Users");
 
     intervalRef.current = setInterval(() => {
-      setTimer((prevTimer) => {
-        if (prevTimer.seconds > 0) {
-          return { ...prevTimer, seconds: prevTimer.seconds - 1 };
-        } else if (prevTimer.minutes > 0) {
-          return { minutes: prevTimer.minutes - 1, seconds: 59 };
-        } else {
-          clearInterval(intervalRef.current);
-          document.getElementById("pop").style.zIndex = "100";
-          Users.doc(location.state.data.id).update({ Score: score });
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      } else if (minutes > 0) {
+        setMinutes(minutes - 1);
+        setSeconds(59);
+      } else {
+        clearInterval(intervalRef.current);
+        document.getElementById("pop").style.zIndex = "100";
+        Users.doc(location.state.data.id).update({ Score: score });
 
-          setTimeout(() => {
-            navigate("/Leaderboard");
-          }, 5000);
-
-          return prevTimer;
-        }
-      });
+        setTimeout(() => {
+          navigate("/Leaderboard");
+        }, 5000);
+      }
     }, 1000);
 
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, [score, location.state.data.id, navigate]);
+  }, [seconds, minutes, score, location.state.data.id, navigate]);
 
   function add(n) {
     setScore((prevScore) => prevScore + n);

@@ -5,6 +5,9 @@ import nbalogo from '../images/logo.png'
 import { useState } from 'react';
 import './style.scss'
 import {useRef} from 'react';
+import email from '../images/email.png'
+import user from '../images/name.png'
+import mobile from '../images/phone.png'
 
 const Registration = () =>{
     // const [numberr, setNumberr] = useState(false);
@@ -114,16 +117,29 @@ const Registration = () =>{
                     <h1 style={{paddingRight: '50px', paddingLeft: '50px', color: 'white', fontSize: '20px'}}>WELCOME</h1>
                 </div>
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input type="text" placeholder='NAME' id="Name" style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"100%", height:'47px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor:'transparent'}}/> 
+                    <input type="text" placeholder='NAME' id="Name" style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', color:"black", paddingLeft: '40px', paddingRight: '10px', backgroundColor:'transparent'}}/> 
+
+                    <div style={{width:'900px',display:'flex',height:'47px',position:'absolute',paddingLeft:'10px',paddingTop:'3px'}}>
+                        <img src={user} style={{position:'absolute',width:'20px'}} />
+                    </div>
                 </div>
                 
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input type="email" placeholder='EMAIL' id='email' style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"100%", height:'47px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'transparent' }} />
+                    <input type="email" placeholder='EMAIL' id='email' style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', color:"black", paddingLeft: '40px', paddingRight: '10px', backgroundColor: 'transparent' }} />
+
+                    
+                    <div style={{width:'900px',display:'flex',height:'47px',position:'absolute',paddingLeft:'10px',paddingTop:'8px'}}>
+                        <img src={email} style={{position:'absolute',width:'20px'}} />
+                    </div>
                 </div>
 
 
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <input type="number" placeholder='MOBILE (971 xx xxx xxxx)' id='no' style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"100%", height:'47px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'transparent' }} />
+                        <input type="number" placeholder='MOBILE (971 xx xxx xxxx)' id='no' style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', color:"black", paddingLeft: '40px', paddingRight: '10px', backgroundColor: 'transparent' }} />
+                        
+                    <div style={{width:'900px',display:'flex',height:'47px',position:'absolute',paddingLeft:'10px',paddingTop:'5px'}}>
+                        <img src={mobile} style={{position:'absolute',width:'20px'}} />
+                    </div>
                 </div>
 
        
