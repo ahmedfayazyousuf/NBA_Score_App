@@ -15,6 +15,7 @@ const Score = () => {
 
     useEffect(() => {
         const Users = firebase.firestore().collection("Users");
+        const scorev =  parseInt(document.getElementById('Score').innerHTML, 10)
 
         let myInterval = setInterval(() => {
           if (seconds > 0) {
@@ -23,7 +24,8 @@ const Score = () => {
             if (minutes === 0) {
               clearInterval(myInterval)
               document.getElementById('pop').style.zIndex = '100'
-              Users.doc(location.state.data.id).update({Score:score})
+              document.getElementById('score').innerHTML = scorev
+              Users.doc(location.state.data.id).update({Score:scorev})
 
               setTimeout(()=>{
                 navigate('/Leaderboard')
@@ -45,14 +47,13 @@ const Score = () => {
             // setScore(score + n)
             console.log(document.getElementById('Score').innerHTML)
             document.getElementById('Score').innerHTML=  parseInt(document.getElementById('Score').innerHTML, 10) + n;
+            // setScore(score+n)
     }
     return(
             
         <div style={{display:"flex", flexDirection:"column", width:"100%", height: "100vh", justifyContent:"center", alignItems:"center", flexWrap: 'wrap', textAlign: 'center'}}>
           
-          <div style={{display:'flex',width:'100%',height:'20%',justifyContent:'flex-end',alignSelf:'flex-start',position:'absolute',top:'0',padding:'30px'}}>
-            <img src={nbalogo} style={{minWidth: '100px', maxWidth: '300px'}}/>
-          </div>
+          <img style={{width: '150px', position: 'absolute', top: '25px', right: '25px'}} src={nbalogo} alt="NBALogo"/>
           
           <div style={{marginBottom:'20px',color:'white'}}>
                 <h1>{location.state.data.name}</h1>
@@ -96,7 +97,7 @@ const Score = () => {
                 
                 <div style={{width:'300px',height:'100px',border:'1px white solid', borderRadius:'20px',display:'flex',justifyContent:"center", alignItems:"center",color:'white'}}>
 
-                    <h1>{score}</h1>
+                    <h1 id="score"></h1>
                 </div>
 
             </div>

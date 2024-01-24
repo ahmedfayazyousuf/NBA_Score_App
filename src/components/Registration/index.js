@@ -117,7 +117,7 @@ const Registration = () =>{
                     <h1 style={{paddingRight: '50px', paddingLeft: '50px', color: 'white', fontSize: '20px'}}>WELCOME</h1>
                 </div>
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input type="text" placeholder='NAME' id="Name" style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', color:"black", paddingLeft: '40px', paddingRight: '10px', backgroundColor:'transparent',zIndex:'10'}}/> 
+                    <input type="text" placeholder='NAME' id="Name" style={{background:"transparent",fontSize:'20px',color:'white', borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', paddingLeft: '40px', paddingRight: '10px', backgroundColor:'transparent',zIndex:'10'}}/> 
 
                     <div style={{width:'900px',display:'flex',height:'47px',position:'absolute',paddingLeft:'10px',paddingTop:'3px',zIndex:'0'}}>
                         <img src={user} style={{position:'absolute',width:'20px',zIndex:'0'}} />
@@ -125,7 +125,7 @@ const Registration = () =>{
                 </div>
                 
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input type="email" placeholder='EMAIL' id='email' style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', color:"black", paddingLeft: '40px', paddingRight: '10px', backgroundColor: 'transparent',zIndex:'10' }} />
+                    <input type="email" placeholder='EMAIL' id='email' style={{background:"transparent",fontSize:'20px',color:'white', borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', paddingLeft: '40px', paddingRight: '10px', backgroundColor: 'transparent',zIndex:'10' }} />
 
                     
                     <div style={{width:'900px',display:'flex',height:'47px',position:'absolute',paddingLeft:'10px',paddingTop:'8px',zIndex:'0'}}>
@@ -135,7 +135,7 @@ const Registration = () =>{
 
 
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <input type="number" placeholder='MOBILE (971 xx xxx xxxx)' id='no' style={{background:"transparent", borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', color:"black", paddingLeft: '40px', paddingRight: '10px', backgroundColor: 'transparent',zIndex:'10' }} />
+                        <input type="number" placeholder='MOBILE (971 xx xxx xxxx)' id='no' style={{background:"transparent",fontSize:'20px',color:'white', borderRadius: '10px', border:"1px solid white", marginBottom:'15px', width:"900px", height:'47px', paddingLeft: '40px', paddingRight: '10px', backgroundColor: 'transparent',zIndex:'10' }} />
                         
                     <div style={{width:'900px',display:'flex',height:'47px',position:'absolute',paddingLeft:'10px',paddingTop:'5px',zIndex:'0'}}>
                         <img src={mobile} style={{position:'absolute',width:'20px',zIndex:'0'}} />
