@@ -53,9 +53,9 @@ const Leaderboard = () => {
         </div>`
         
         <div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-10px'}}>
-          <div style={{display:'flex',flexDirection:'column',width:'80%',overflow:'scroll'}}>
+          <div style={{display:'flex',flexDirection:'column',width:'80%'}}>
                 {leaderboardData.map((user,index) => (
-                <div style={{display:'flex', width:'100%',marginBottom:'8px',overflow:'scroll',}}>
+                <div style={{display:'flex', width:'100%',marginBottom:'8px'}}>
                     <div style={{flex:'40%', borderRadius:'10px', background:'#00438C', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', paddingLeft: '45px'}}>
                         <h1 style={{color:'white',fontSize:'25px'}}>{index+1 === 10? index+1: `0${index+1}`}</h1>
                     </div>
