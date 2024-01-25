@@ -9,7 +9,7 @@ const Score = () => {
 
     const [score,setScore] = useState(0)
     const [minutes, setMinutes] = useState(0)
-    const [seconds, setSeconds] = useState(5)
+    const [seconds, setSeconds] = useState(60)
     const location = useLocation()
     const navigate = useNavigate();
 
